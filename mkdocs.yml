@@ -1,29 +1,63 @@
 site_name: My Docs
+site_description: Documentation for my project
+site_author: Your Name
+site_url: https://fiagi.github.io/fiagi-site
+
 theme:
   name: material
   features:
+    # Navigation
     - navigation.tabs
     - navigation.sections
     - navigation.top
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.expand
+    - toc.follow
+    
+    # Search
     - search.suggest
     - search.highlight
+    
+    # Content
     - content.tabs.link
     - content.code.annotation
     - content.code.copy
+    
+  # Appearance
+  font:
+    text: Roboto
+    code: Roboto Mono
   language: en
+  
+  # Color schemes
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: pink
+      accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-      primary: teal
-      accent: purple 
-    - scheme: slate 
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: purple
+      accent: indigo
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode    
-      primary: teal
-      accent: lime
+        name: Switch to light mode
+
+# Navigation structure
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Configuration: getting-started/configuration.md
+  - User Guide:
+    - Basic Usage: user-guide/basic-usage.md
+    - Advanced Features: user-guide/advanced-features.md
+  - API Reference: api/reference.md
+  - About: about.md
 
 plugins:
   - search
@@ -35,9 +69,6 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - admonition
-  - pymdownx.arithmatex:
-      generic: true
-  - footnotes
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.mark
@@ -49,4 +80,22 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/YourGitHubUsername
+      link: https://github.com/fiagi
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+  version:
+    provider: mike
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra_javascript:
+  - assets/javascripts/extra.js
